@@ -1,0 +1,91 @@
+.header {
+  padding: 0 12px;
+  height: 60px;
+  background-color: #1a1e1f;
+}
+
+.content {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-h5);
+  font-weight: 700;
+  color: var(--color-font);
+  text-decoration: none;
+}
+
+.nav {
+  display: none;
+}
+
+.spotifyButton {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .nav a {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    text-decoration: none;
+    font-size: var(--font-body);
+  }
+
+  .nav a span {
+    font-weight: 600;
+  }
+
+  .icon {
+    color: var(--color-font);
+    opacity: 0.25;
+  }
+
+  .iconActive {
+    color: var(--Foundation-Primary-Normal, #26b258);
+  }
+
+  .spotifyButton {
+    display: inline-flex;
+    padding: 5px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 100px;
+    border: none;
+    background: var(--Foundation-Primary-Normal, #26b258);
+    box-shadow: 0 0 14.39px 0 rgba(38, 178, 88, 0.25);
+    font-weight: 700;
+  }
+
+  .menuMobile {
+    display: none;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-font);
+  }
+
+  .userInfo img {
+    border-radius: 50%;
+  }
+}
