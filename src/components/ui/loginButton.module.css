@@ -1,0 +1,12 @@
+.spotifyButton {
+  display: inline-flex;
+  padding: 5px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 100px;
+  border: none;
+  background: var(--Foundation-Primary-Normal, #26b258);
+  box-shadow: 0 0 14.39px 0 rgba(38, 178, 88, 0.25);
+  font-weight: 700;
+}

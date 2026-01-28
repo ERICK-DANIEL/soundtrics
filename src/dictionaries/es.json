@@ -1,0 +1,40 @@
+{
+  "header": {
+    "home": "Inicio",
+    "charts": "Mis charts",
+    "tools": "Herramientas",
+    "login": "Iniciar con Spotify"
+  },
+  "title": {
+    "welcome": "¡Descubre tus estadísticas de",
+    "spotify": "Spotify!",
+    "statistics": "",
+    "subtitle": "Obtén información sobre tus hábitos de escucha, tus canciones favoritas, tus artistas favoritos y mucho más."
+  },
+  "cards": {
+    "charts": {
+      "title": "Mis charts",
+      "description": "Ver las canciones, artistas y álbumes que has reproducido con más frecuencia en diferentes períodos de tiempo."
+    },
+    "tools": {
+      "title": "Herramientas",
+      "description": "Elimina fácilmente canciones duplicadas de una lista de reproducción o genera y descarga tus resúmenes."
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Un proceso simple de tres pasos para redescubrir tu música.",
+    "step1": {
+      "title": "1. Conectar",
+      "description": "Inicia sesión con tu cuenta de Spotify para permitir que Soundtrics acceda a tus datos de escucha."
+    },
+    "step2": {
+      "title": "2. Analizar",
+      "description": "Analizamos tu historial de escucha para generar charts e información personalizada."
+    },
+    "step3": {
+      "title": "3. Descubrir",
+      "description": "Explora tus canciones y artistas más escuchados. ¡Comparte tus estadísticas con tus amigos!"
+    }
+  }
+}
