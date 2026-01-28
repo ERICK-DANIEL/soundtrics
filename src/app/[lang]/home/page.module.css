@@ -53,6 +53,12 @@
   padding: 24px;
   width: 100%;
   max-width: 360px;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
 .cardImage {
