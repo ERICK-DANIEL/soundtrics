@@ -50,6 +50,7 @@ a {
   --line-height-body: 1.5; /* Texto legible */
 
   --color-font: #efeee0;
+  --color-primary: #26b258;
 }
 
 @media (min-width: 768px) {

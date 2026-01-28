@@ -1,8 +1,8 @@
 "use client";
-
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useDictionary } from "@/context/DictionaryProvider";
-import { usePathname } from "next/dist/client/components/navigation";
+import { usePathname } from "next/navigation";
+import LoginButton from "../ui/LoginButton";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/components/layout/header.module.css";
@@ -24,7 +24,6 @@ export default function Header() {
           />
           Soundtrics
         </Link>
-
         <nav className={styles.nav}>
           <Link
             href={`/${lang}/home`}
@@ -32,7 +31,7 @@ export default function Header() {
               pathname === `/${lang}/home` ? styles.iconActive : styles.icon
             }
           >
-            <i className={`bi bi-house-fill`}></i>
+            <i className="bi bi-house-fill"></i>
             <span>{dict.header.home}</span>
           </Link>
           <Link
@@ -54,42 +53,30 @@ export default function Header() {
             <span>{dict.header.tools}</span>
           </Link>
         </nav>
-
         <div>
           {status === "loading" ? (
             <div></div>
           ) : session ? (
-            <span className={styles.userInfo}>
-              <p>{session.user?.name}</p>
-              <img
-                src={session.user?.image || "/user-profile.svg"}
-                alt="User Avatar"
-                width={40}
-                height={40}
-              />
-            </span>
-          ) : (
             <>
               <Image
-                src={"/menu-mobile.svg"}
+                src="/menu-mobile.svg"
                 className={styles.menuMobile}
                 alt="Menu Mobile"
                 width={30}
                 height={30}
               />
-              <button
-                onClick={() => signIn("spotify")}
-                className={styles.spotifyButton}
-              >
-                <Image
-                  src="/spotify.svg"
-                  alt="Spotify Logo"
-                  width={30}
-                  height={30}
+              <span className={styles.userInfo}>
+                <p>{session.user?.name}</p>
+                <img
+                  src={session.user?.image || "/user-profile.svg"}
+                  alt="User Avatar"
+                  width={40}
+                  height={40}
                 />
-                Login with Spotify
-              </button>
+              </span>
             </>
+          ) : (
+            <LoginButton />
           )}
         </div>
       </div>

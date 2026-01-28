@@ -1,0 +1,177 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 16px;
+}
+
+.main h1 {
+  color: var(--color-font);
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spotify {
+  font-size: var(--font-h1);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.mobileBreak {
+  display: block;
+}
+
+.subtitle {
+  font-size: var(--font-body);
+  color: var(--color-font);
+  font-weight: 700;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.cardsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin: 40px 16px;
+}
+
+.card {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 14.39px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  min-height: 177px;
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.cardImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.card h4 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  color: var(--color-font);
+  font-size: var(--font-h4);
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  gap: 8px;
+}
+
+.card p {
+  position: relative;
+  z-index: 1;
+  color: var(--color-font);
+  font-size: var(--font-body);
+  margin: 0;
+  max-width: 220px;
+}
+
+.card:nth-child(1) {
+  justify-content: flex-end;
+}
+
+.card:nth-child(1) h4 {
+  text-align: right;
+}
+
+.card:nth-child(2) {
+  justify-content: flex-start;
+}
+
+.card:nth-child(2) h4,
+.card:nth-child(2) p {
+  text-align: left;
+}
+
+.howItWorksSection {
+  padding: 40px 16px;
+  color: var(--color-font);
+  background-color: #1a1e1f;
+}
+
+.howItWorksSection h2 {
+  text-align: center;
+  font-size: var(--font-h2);
+  font-weight: 800;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.stepIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  font-size: 24px;
+  color: #000000;
+}
+
+.stepTitle {
+  font-size: var(--font-h4);
+  font-weight: 700;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.stepDescription {
+  font-size: var(--font-body);
+  text-align: center;
+  margin-top: 8px;
+  max-width: 380px;
+}
+
+@media (min-width: 768px) {
+  .mobileBreak {
+    display: none;
+  }
+
+  .main h1 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .cardsSection {
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+
+  .card {
+    flex: 1;
+  }
+
+  .stepsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+  }
+}

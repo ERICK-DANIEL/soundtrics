@@ -2,6 +2,39 @@
   "header": {
     "home": "Home",
     "charts": "My charts",
-    "tools": "Tools"
+    "tools": "Tools",
+    "login": "Login with Spotify"
+  },
+  "title": {
+    "welcome": "Discover your",
+    "spotify": "Spotify",
+    "statistics": "statistics!",
+    "subtitle": "Get insights into your listening habits, your favorite songs, your favorite artists, and much more."
+  },
+  "cards": {
+    "charts": {
+      "title": "My charts",
+      "description": "View the songs, artists, and albums you have played most often in different time periods."
+    },
+    "tools": {
+      "title": "Tools",
+      "description": "Easily remove duplicate songs from a playlist or generate and download your recaps."
+    }
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "A simple three-step process to rediscover your music.",
+    "step1": {
+      "title": "1.Connect",
+      "description": "Securely log in with your Spotify account. We never store your password."
+    },
+    "step2": {
+      "title": "2. Analyze",
+      "description": "We process your listening history to create your personalized statistics."
+    },
+    "step3": {
+      "title": "3. Discover",
+      "description": "Explore your top tracks, artists. Share your stats with your friends!"
+    }
   }
 }
