@@ -1,8 +1,10 @@
 "use client";
+
+import { useDictionary } from "@/context/DictionaryProvider";
 import Header from "@/components/layout/Header";
 import Image from "next/image";
-import { useDictionary } from "@/context/DictionaryProvider";
 import styles from "@/app/[lang]/home/page.module.css";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   const { dict } = useDictionary();
@@ -76,6 +78,7 @@ export default function Home() {
           </span>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

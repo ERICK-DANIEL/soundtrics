@@ -1,7 +1,7 @@
 .header {
   padding: 0 16px;
   height: 60px;
-  background-color: #1a1e1f;
+  background-color: var(--color-dark-alt, #1a1e1f);
 }
 
 .content {
@@ -17,7 +17,7 @@
   gap: 8px;
   font-size: var(--font-h5);
   font-weight: 700;
-  color: var(--color-font);
+  color: var(--color-black-light, #e8e8e8);
   text-decoration: none;
 }
 
@@ -57,12 +57,12 @@
   }
 
   .icon {
-    color: var(--color-font);
+    color: var(--color-black-light, #e8e8e8);
     opacity: 0.25;
   }
 
   .iconActive i {
-    color: var(--color-primary);
+    color: var(--color-primary-normal, #26b258);
     filter: drop-shadow(0 0 12px rgba(38, 178, 88, 0.25));
   }
 
@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--color-font);
+    color: var(--color-black-light, #e8e8e8);
   }
 
   .userInfo img {
