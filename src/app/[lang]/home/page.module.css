@@ -168,7 +168,7 @@
   .cardsSection {
     flex-direction: row;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 60px auto;
   }
 
   .card {
