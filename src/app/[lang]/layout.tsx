@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 import { Providers } from "@/components/providers/Providers";
 import { getDictionary } from "@/lib/get-dictionary";
 import { DictionaryProvider } from "@/context/DictionaryProvider";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import "@/app/globals.css";
 
 const montserrat = Montserrat({
@@ -12,7 +14,17 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Soundtrics",
-  description: "Tu clon de Spotify con Next.js",
+  description:
+    "A music analytics platform providing insights into your listening habits.",
+  keywords: [
+    "music analytics",
+    "listening habits",
+    "music insights",
+    "audio analysis",
+    "music trends",
+    "personalized music data",
+  ],
+  creator: "Erick Daniel",
 };
 
 export default async function RootLayout({
@@ -29,7 +41,11 @@ export default async function RootLayout({
     <html lang={lang}>
       <body className={montserrat.variable}>
         <DictionaryProvider dict={dict} lang={lang}>
-          <Providers>{children}</Providers>
+          <Providers>
+            <Header />
+            <main style={{ flex: 1, width: "100%" }}>{children}</main>
+            <Footer />
+          </Providers>
         </DictionaryProvider>
       </body>
     </html>

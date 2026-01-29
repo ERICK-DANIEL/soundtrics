@@ -1,16 +1,13 @@
 "use client";
 
 import { useDictionary } from "@/context/DictionaryProvider";
-import Header from "@/components/layout/Header";
 import Image from "next/image";
 import styles from "@/app/[lang]/home/page.module.css";
-import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   const { dict } = useDictionary();
   return (
     <>
-      <Header />
       <main className={styles.main}>
         <h1>
           {dict.title.welcome} <br className={styles.mobileBreak} />
@@ -78,7 +75,6 @@ export default function Home() {
           </span>
         </div>
       </section>
-      <Footer />
     </>
   );
 }
