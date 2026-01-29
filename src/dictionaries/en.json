@@ -5,6 +5,30 @@
     "tools": "Tools",
     "login": "Login with Spotify"
   },
+  "footer": {
+    "tools": {
+      "title": "Tools",
+      "myCharts": "My charts",
+      "duplicateRemover": "Duplicate Remover"
+    },
+    "links": {
+      "title": "Links",
+      "twitter": "Twitter",
+      "spotify": "Spotify Profile",
+      "github": "GitHub Repository"
+    },
+    "resources": {
+      "title": "Resources",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": {
+      "text": "This app is not affiliated with or endorsed by Spotify",
+      "copyright": "©2025 Soundtrics",
+      "rights": "All rights reserved"
+    }
+  },
   "title": {
     "welcome": "Discover your",
     "spotify": "Spotify",

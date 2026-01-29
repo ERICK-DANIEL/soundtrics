@@ -5,7 +5,7 @@ import styles from "./footer.module.css";
 import Image from "next/image";
 
 export default function Footer() {
-  const { lang } = useDictionary();
+  const { dict, lang } = useDictionary();
 
   return (
     <footer className={styles.footer}>
@@ -22,36 +22,40 @@ export default function Footer() {
       </div>
 
       <div className={styles.tools}>
-        <span>Tools</span>
-        <a href={`/${lang}/charts`}>My charts</a>
-        <a href="/delete-duplicates">Delete duplicates songs</a>
+        <span>{dict.footer.tools.title}</span>
+        <a href={`/${lang}/charts`}>{dict.footer.tools.myCharts}</a>
+        <a href="/delete-duplicates">{dict.footer.tools.duplicateRemover}</a>
       </div>
 
       <div className={styles.links}>
-        <span>Links</span>
+        <span>{dict.footer.links.title}</span>
         <a href="">
-          Twitter
+          {dict.footer.links.twitter}
           <i className="bi bi-twitter-x"></i>
         </a>
         <a href="">
-          Spotify Profile
+          {dict.footer.links.spotify}
           <i className="bi bi-spotify"></i>
+        </a>
+        <a href="">
+          {dict.footer.links.github}
+          <i className="bi bi-github"></i>
         </a>
       </div>
 
       <div className={styles.resources}>
-        <span>Resources</span>
-        <a href={`/${lang}/contact`}>Contact</a>
-        <a href={`/${lang}/privacy`}>Privacy Policy</a>
-        <a href={`/${lang}/terms`}>Terms of Service</a>
+        <span>{dict.footer.resources.title}</span>
+        <a href={`/${lang}/contact`}>{dict.footer.resources.contact}</a>
+        <a href={`/${lang}/privacy`}>{dict.footer.resources.privacy}</a>
+        <a href={`/${lang}/terms`}>{dict.footer.resources.terms}</a>
       </div>
 
       <div className={styles.copyright}>
-        <span>This app is not affiliated with or endorsed by Spotify</span>
+        <span>{dict.footer.copyright.text}</span>
         <br />
         <span className={styles.copyrightText}>
-          ©2025 Soundtrics. <br />
-          All rights reserved.
+          {dict.footer.copyright.copyright} <br />
+          {dict.footer.copyright.rights}
         </span>
       </div>
     </footer>
