@@ -3,9 +3,10 @@
 import { useDictionary } from "@/context/DictionaryProvider";
 import Image from "next/image";
 import styles from "@/app/[lang]/home/page.module.css";
+import Link from "next/dist/client/link";
 
 export default function Home() {
-  const { dict } = useDictionary();
+  const { lang, dict } = useDictionary();
   return (
     <>
       <main className={styles.main}>
@@ -17,10 +18,10 @@ export default function Home() {
         <span className={styles.subtitle}>{dict.title.subtitle}</span>
       </main>
       <section className={styles.cardsSection}>
-        <div className={styles.card}>
+        <Link href={`/${lang}/charts`} className={styles.card}>
           <Image
             src="/charts-card.png"
-            alt=""
+            alt="My charts"
             fill
             className={styles.cardImage}
           />
@@ -28,11 +29,11 @@ export default function Home() {
             <h4>{dict.cards.charts.title}</h4>
             <p>{dict.cards.charts.description}</p>
           </div>
-        </div>
-        <div className={styles.card}>
+        </Link>
+        <Link href={`/${lang}/tools`} className={styles.card}>
           <Image
             src="/tools-card.png"
-            alt=""
+            alt="Tools"
             fill
             className={styles.cardImage}
           />
@@ -40,7 +41,7 @@ export default function Home() {
             <h4>{dict.cards.tools.title}</h4>
             <p>{dict.cards.tools.description}</p>
           </div>
-        </div>
+        </Link>
       </section>
       <section className={styles.howItWorksSection}>
         <h2>{dict.howItWorks.title}</h2>

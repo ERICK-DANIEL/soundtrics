@@ -6,6 +6,7 @@ import { SelectChartData } from "@/types/spotify";
 import { useEffect, useState } from "react";
 import styles from "@/app/[lang]/charts/page.module.css";
 import { ChartCard } from "@/components/ChartCard";
+import Image from "next/image";
 
 export default function ChartsPage() {
   const { data: session } = useSession();
@@ -28,9 +29,9 @@ export default function ChartsPage() {
 
   return (
     <div className={styles.container}>
-      <h1>Select your chart</h1>
+      <h1 className={styles.title}>Select your chart</h1>
 
-      <div className={styles.grid}>
+      <div className={styles.cardsContainer}>
         {topTrack && (
           <ChartCard
             title="Top Tracks"
@@ -39,7 +40,6 @@ export default function ChartsPage() {
             subtitle="#1 Last 4 Weeks"
           />
         )}
-
         {topArtist && (
           <ChartCard
             title="Top Artists"
@@ -48,6 +48,20 @@ export default function ChartsPage() {
             subtitle="#1 Last 4 Weeks"
           />
         )}
+        <div className={styles.card}>
+          <div className={styles.contentCard}>
+            <h4 className={styles.titleCard}>Recently played songs</h4>
+          </div>
+          <div className={styles.imageWrapperCard}>
+            <Image
+              src={"/recently-played.png"}
+              alt={"recently played songs"}
+              fill
+              priority
+              className={styles.bgImageCard}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

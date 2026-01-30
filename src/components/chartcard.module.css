@@ -24,7 +24,7 @@
 }
 
 .title {
-  font-size: var(--font-h3);
+  font-size: var(--font-h5);
   font-weight: bold;
   margin-bottom: 8px;
   color: var(--color-black-light, #e8e8e8);
