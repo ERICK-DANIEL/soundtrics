@@ -16,6 +16,17 @@
       "twitter": "Twitter",
       "spotify": "Perfil de Spotify",
       "github": "Repositorio de GitHub"
+    },
+    "resources": {
+      "title": "Recursos",
+      "contact": "Contacto",
+      "privacy": "Política de privacidad",
+      "terms": "Términos de servicio"
+    },
+    "copyright": {
+      "text": "Esta aplicación no está afiliada ni respaldada por Spotify",
+      "copyright": "©2025 Soundtrics",
+      "rights": "Todos los derechos reservados"
     }
   },
   "title": {

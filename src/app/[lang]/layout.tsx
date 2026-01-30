@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "personalized music data",
   ],
   creator: "Erick Daniel",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default async function RootLayout({
