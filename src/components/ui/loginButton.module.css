@@ -6,7 +6,12 @@
   gap: 5px;
   border-radius: 100px;
   border: none;
-  background: var(--Foundation-Primary-Normal, #26b258);
+  background: var(--color-primary-normal, #26b258);
   box-shadow: 0 0 14.39px 0 rgba(38, 178, 88, 0.25);
   font-weight: 700;
+  cursor: pointer;
+}
+
+.spotifyButton:hover {
+  background: var(--color-primary-normal-hover, #22a04f);
 }
