@@ -3,7 +3,12 @@
     "home": "Home",
     "charts": "My charts",
     "tools": "Tools",
-    "login": "Login with Spotify"
+    "settings": "Settings",
+    "profile": "Profile",
+    "login": "Login with Spotify",
+    "songs": "Top Songs",
+    "artists": "Top Artists",
+    "logout": "Logout"
   },
   "footer": {
     "tools": {

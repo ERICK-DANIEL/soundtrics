@@ -3,7 +3,12 @@
     "home": "Inicio",
     "charts": "Mis charts",
     "tools": "Herramientas",
-    "login": "Iniciar con Spotify"
+    "settings": "Configuración",
+    "profile": "Perfil",
+    "login": "Iniciar con Spotify",
+    "songs": "Top Canciones",
+    "artists": "Top Artistas",
+    "logout": "Cerrar sesión"
   },
   "footer": {
     "tools": {
