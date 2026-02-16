@@ -13,22 +13,15 @@
     "logout": "Cerrar sesión"
   },
   "footer": {
-    "tools": {
-      "title": "Herramientas",
-      "myCharts": "Mis charts",
-      "duplicateRemover": "Eliminador de duplicados"
-    },
     "links": {
       "title": "Enlaces",
       "twitter": "Twitter",
-      "spotify": "Perfil de Spotify",
-      "github": "Repositorio de GitHub"
+      "github": "Repositorio"
     },
     "resources": {
       "title": "Recursos",
       "contact": "Contacto",
-      "privacy": "Política de privacidad",
-      "terms": "Términos de servicio"
+      "privacy": "Política de privacidad"
     },
     "copyright": {
       "text": "Esta aplicación no está afiliada ni respaldada por Spotify",
