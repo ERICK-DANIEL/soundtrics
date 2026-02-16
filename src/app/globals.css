@@ -42,18 +42,17 @@ a {
 }
 
 :root {
-  --font-h1: 2rem; /* 32px */
-  --font-h2: 1.5rem; /* 24px */
-  --font-h3: 1.25rem; /* 20px */
-  --font-h4: 1.125rem; /* 18px */
-  --font-h5: 1rem; /* 16px */
-  --font-body: 0.875rem; /* 14px */
-  --font-small: 0.75rem; /* 12px */
+  --font-h1: 1.8rem;
+  --font-h2: 1.35rem;
+  --font-h3: 1.125rem;
+  --font-h4: 1.0125rem;
+  --font-h5: 0.9rem;
+  --font-body: 0.7875rem;
+  --font-small: 0.675rem;
 
-  --line-height-heading: 1.2; /* Títulos apretados */
-  --line-height-body: 1.5; /* Texto legible */
+  --line-height-heading: 1.2;
+  --line-height-body: 1.5;
 
-  /* Colors */
   --color-light: #efeee0;
   --color-dark: #1d2123;
   --color-dark-alt: #1a1e1f;
@@ -92,25 +91,13 @@ a {
 
 @media (min-width: 768px) {
   :root {
-    --font-h1: 2.5rem;
-    --font-h2: 2rem;
-    --font-h3: 1.5rem;
-    --font-h4: 1.25rem;
-    --font-h5: 1rem;
-    --font-body: 0.875rem;
-    --font-small: 0.75rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --font-h1: 3rem;
-    --font-h2: 2.25rem;
-    --font-h3: 1.75rem;
-    --font-h4: 1.5rem;
-    --font-h5: 1.125rem;
-    --font-body: 1rem;
-    --font-small: 0.875rem;
+    --font-h1: 2.25rem;
+    --font-h2: 1.8rem;
+    --font-h3: 1.35rem;
+    --font-h4: 1.125rem;
+    --font-h5: 0.9rem;
+    --font-body: 0.7875rem;
+    --font-small: 0.675rem;
   }
 }
 

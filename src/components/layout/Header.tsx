@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useDictionary } from "@/context/DictionaryProvider";
 import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import LoginButton from "@/components/ui/LoginButton";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/components/layout/header.module.css";
@@ -27,55 +28,30 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.content}>
-        <Link
-          href={`/${lang}/home`}
-          className={styles.logo}
-          onClick={closeMenuMobile}
-        >
-          <Image src="/soundtrics.svg" alt="Logo" width={26} height={26} />
-          Soundtrics
-        </Link>
+        {/* LOGO */}
+        <div className={styles.columnLeft}>
+          <Link
+            href={`/${lang}/home`}
+            className={styles.logo}
+            onClick={closeMenuMobile}
+          >
+            <Image src="/soundtrics.svg" alt="Logo" width={26} height={26} />
+            <span>Soundtrics</span>
+          </Link>
+        </div>
 
+        {/* NAVEGACIÓN CENTRAL */}
         <nav
           className={`${styles.nav} ${menuMobileOpen ? styles.navOpen : ""}`}
         >
-          <div className={styles.menuChartsWrapper}>
-            <Link
-              href={`/${lang}/charts`}
-              className={`${getLinkClass("/charts")} ${styles.menuChartsParent}`}
-              onClick={closeMenuMobile}
-            >
-              <i className="bi bi-bar-chart-fill"></i>
-              <span>{dict.header.charts}</span>
-            </Link>
-
-            <div className={styles.menuCharts}>
-              <Link
-                href={`/${lang}/charts/top-songs`}
-                className={getLinkClass("/charts/top-songs")}
-                onClick={closeMenuMobile}
-              >
-                <i className="bi bi-music-note-list"></i>
-                <span>{dict.header.songs}</span>
-              </Link>
-              <Link
-                href={`/${lang}/charts/top-artists`}
-                className={getLinkClass("/charts/top-artists")}
-                onClick={closeMenuMobile}
-              >
-                <i className="bi bi-person-lines-fill"></i>
-                <span>{dict.header.artists}</span>
-              </Link>
-              <Link
-                href={`/${lang}/charts/recently-played`}
-                className={getLinkClass("/charts/recently-played")}
-                onClick={closeMenuMobile}
-              >
-                <i className="bi bi-clock-history"></i>
-                <span>{dict.header.recentlyPlayed}</span>
-              </Link>
-            </div>
-          </div>
+          <Link
+            href={`/${lang}/charts`}
+            className={`${getLinkClass("/charts")} ${styles.menuChartsParent}`}
+            onClick={closeMenuMobile}
+          >
+            <i className="bi bi-bar-chart-fill"></i>
+            <span>{dict.header.charts}</span>
+          </Link>
 
           <Link
             href={`/${lang}/tools`}
@@ -95,9 +71,10 @@ export default function Header() {
             <span>{dict.header.games}</span>
           </Link>
 
+          {/* Solo visibles en menú móvil */}
           <Link
             href={`/${lang}/settings`}
-            className={`${getLinkClass("/settings")} ${styles.menuDesktopOnly}`}
+            className={`${getLinkClass("/settings")} ${styles.menuMobileOnly}`}
             onClick={closeMenuMobile}
           >
             <i className="bi bi-gear-fill"></i>
@@ -105,7 +82,7 @@ export default function Header() {
           </Link>
           <Link
             href={`/${lang}/profile`}
-            className={`${getLinkClass("/profile")} ${styles.menuDesktopOnly}`}
+            className={`${getLinkClass("/profile")} ${styles.menuMobileOnly}`}
             onClick={closeMenuMobile}
           >
             <i className="bi bi-person-fill"></i>
@@ -113,50 +90,57 @@ export default function Header() {
           </Link>
         </nav>
 
-        <div className={styles.actions}>
-          {status === "loading" ? (
-            <div className={styles.loader}></div>
-          ) : session ? (
-            <div className={styles.userWrapper}>
-              <div className={styles.userDropdown}>
-                <div className={styles.userInfo}>
-                  <p>{session.user?.name}</p>
-                  <Image
-                    src={session.user?.image || "/user-profile.svg"}
-                    alt="User Avatar"
-                    width={32}
-                    height={32}
-                    className={styles.avatar}
-                  />
+        {/* LOGIN / PERFIL DERECHA */}
+        <div className={styles.columnRight}>
+          <div className={styles.actions}>
+            {status === "loading" ? (
+              <div className={styles.loaderPlaceholder} />
+            ) : session ? (
+              <div className={styles.userWrapper}>
+                <div className={styles.userDropdown}>
+                  <div className={styles.userInfo}>
+                    <p className={styles.userName}>{session.user?.name}</p>
+                    <Image
+                      src={session.user?.image || "/user-profile.svg"}
+                      alt="User Avatar"
+                      width={32}
+                      height={32}
+                      className={styles.avatar}
+                    />
+                  </div>
+
+                  <div className={styles.dropdownMenu}>
+                    <Link href={`/${lang}/profile`} className={styles.menu}>
+                      <i className="bi bi-person-fill"></i>
+                      {dict.header.profile}
+                    </Link>
+                    <Link href={`/${lang}/settings`} className={styles.menu}>
+                      <i className="bi bi-gear-fill"></i>
+                      {dict.header.settings}
+                    </Link>
+                    <hr className={styles.divider} />
+                    <button onClick={handleLogout} className={styles.logoutBtn}>
+                      <i className="bi bi-box-arrow-right"></i>
+                      {dict.header.logout}
+                    </button>
+                  </div>
                 </div>
 
-                <div className={styles.dropdownMenu}>
-                  <Link href={`/${lang}/profile`}>
-                    <i className="bi bi-person-fill"></i>
-                    {dict.header.profile}
-                  </Link>
-                  <Link href={`/${lang}/settings`}>
-                    <i className="bi bi-gear-fill"></i>
-                    {dict.header.settings}
-                  </Link>
-                  <hr className={styles.divider} />
-                  <button onClick={handleLogout} className={styles.logoutBtn}>
-                    <i className="bi bi-box-arrow-right"></i>
-                    {dict.header.logout}
-                  </button>
-                </div>
+                <Image
+                  src="/menu-mobile.svg"
+                  className={styles.menuMobileBtn}
+                  alt="Menu"
+                  width={30}
+                  height={30}
+                  onClick={() => setMenuMobileOpen(!menuMobileOpen)}
+                />
               </div>
-
-              <Image
-                src="/menu-mobile.svg"
-                className={styles.menuMobile}
-                alt="Menu"
-                width={30}
-                height={30}
-                onClick={() => setMenuMobileOpen(!menuMobileOpen)}
-              />
-            </div>
-          ) : null}
+            ) : (
+              <div className={styles.loginWrapper}>
+                <LoginButton />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>
