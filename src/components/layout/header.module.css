@@ -1,7 +1,9 @@
 .header {
+  position: relative;
   padding: 0 16px;
   height: 60px;
   background-color: var(--color-dark-alt, #1a1e1f);
+  z-index: 1000;
 }
 
 .content {
@@ -15,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: var(--font-h5);
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-black-light, #e8e8e8);
   text-decoration: none;
@@ -23,13 +25,60 @@
 
 .nav {
   display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  max-width: 240px;
+  background-color: var(--color-dark-alt, #1a1e1f);
+  padding: 20px;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.userInfo {
+.navOpen {
+  display: flex;
+}
+
+.nav a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav span {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-black-light, #e8e8e8);
+}
+
+.icon {
+  color: var(--color-black-light, #e8e8e8);
+  opacity: 0.5;
+}
+
+.iconActive {
+  color: var(--color-primary-normal, #26b258);
+}
+
+.menuCharts,
+.dropdownMenu {
   display: none;
 }
 
-.spotifyButton {
+.userWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.menuMobile {
+  display: block;
+  cursor: pointer;
+}
+
+.userInfo {
   display: none;
 }
 
@@ -38,46 +87,141 @@
     padding: 0 32px;
   }
 
-  .nav {
-    display: flex;
-    gap: 36px;
-    align-items: center;
-  }
-
-  .nav a {
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-    text-decoration: none;
-    font-size: var(--font-body);
-  }
-
-  .nav a span {
-    font-weight: 600;
-  }
-
-  .icon {
-    color: var(--color-black-light, #e8e8e8);
-    opacity: 0.25;
-  }
-
-  .iconActive i {
-    color: var(--color-primary-normal, #26b258);
-    filter: drop-shadow(0 0 12px rgba(38, 178, 88, 0.25));
-  }
-
   .menuMobile {
     display: none;
+  }
+
+  .nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    width: auto;
+    max-width: none;
+    padding: 0;
+    gap: 36px;
+    border-top: none;
+  }
+
+  .menuDesktopOnly {
+    display: none !important;
+  }
+
+  .menuChartsWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+
+  .menuCharts {
+    position: absolute;
+    top: 60px;
+    left: -30px;
+    background-color: var(--color-dark-alt, #1a1e1f);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+    padding: 12px 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1001;
+    flex-direction: column;
+  }
+
+  .menuChartsWrapper:hover .menuCharts {
+    display: flex;
+  }
+
+  .menuCharts a {
+    padding: 10px 20px;
+    transition: background 0.2s;
+  }
+
+  .menuCharts a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .userDropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    cursor: pointer;
   }
 
   .userInfo {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+
+  .userInfo p {
     color: var(--color-black-light, #e8e8e8);
   }
 
-  .userInfo img {
-    border-radius: 50%;
+  .dropdownMenu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: var(--color-dark-alt, #1a1e1f);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+    padding: 12px 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1001;
+    flex-direction: column;
   }
+
+  .userDropdown:hover .dropdownMenu {
+    display: flex;
+  }
+
+  .dropdownMenu a,
+  .logoutBtn {
+    padding: 10px 20px;
+    color: var(--color-black-light, #e8e8e8);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .dropdownMenu a:hover,
+  .logoutBtn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-primary-normal, #26b258);
+  }
+
+  .divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+  }
+
+  .icon {
+    opacity: 0.35;
+    transition: opacity 0.3s;
+  }
+
+  .icon:hover {
+    opacity: 1;
+  }
+}
+
+.loader {
+  display: block;
+  width: 120px;
+  height: 100%;
 }

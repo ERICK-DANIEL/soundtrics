@@ -1,31 +1,59 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 
 const locales = ["en", "es"];
 const defaultLocale = "en";
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+  if (
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next") ||
+    pathname.includes(".")
+  ) {
+    return NextResponse.next();
+  }
+
+  const pathnameHasLocale = locales.some((locale) =>
+    pathname.startsWith(`/${locale}`),
   );
 
-  if (pathnameHasLocale) return;
+  if (!pathnameHasLocale) {
+    const acceptLanguage = request.headers.get("Accept-Language");
+    const preferredLanguages = acceptLanguage
+      ? acceptLanguage.split(",").map((l) => l.split(";")[0].trim())
+      : [];
 
-  const acceptLanguage = request.headers.get("Accept-Language");
-  const preferredLanguages = acceptLanguage
-    ? acceptLanguage.split(",").map((lang) => lang.split(";")[0].trim())
-    : [];
-  const locale =
-    preferredLanguages
-      .map((lang) => lang.split("-")[0])
-      .find((lang) => locales.includes(lang)) || defaultLocale;
+    const locale =
+      preferredLanguages
+        .map((l) => l.split("-")[0])
+        .find((l) => locales.includes(l)) || defaultLocale;
 
-  request.nextUrl.pathname = `/${locale}${pathname}/home`;
-  return NextResponse.redirect(request.nextUrl);
+    return NextResponse.redirect(new URL(`/${locale}/home`, request.url));
+  }
+
+  const publicPaths = ["/home"];
+  const locale = pathname.split("/")[1];
+  const pathWithoutLocale = pathname.replace(`/${locale}`, "");
+
+  const isPublic = publicPaths.some(
+    (path) =>
+      pathWithoutLocale === path || pathWithoutLocale.startsWith(path + "/"),
+  );
+
+  const token = await getToken({ req: request });
+
+  if (!token && !isPublic) {
+    return NextResponse.redirect(
+      new URL("/api/auth/signin/spotify", request.url),
+    );
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/((?!_next|favicon.ico|api|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|favicon.ico|.*\\..*).*)"],
 };
