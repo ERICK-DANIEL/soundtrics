@@ -3,11 +3,13 @@
     "home": "Home",
     "charts": "My charts",
     "tools": "Tools",
+    "games": "Games",
     "settings": "Settings",
     "profile": "Profile",
     "login": "Login with Spotify",
     "songs": "Top Songs",
     "artists": "Top Artists",
+    "recentlyPlayed": "Recently Played",
     "logout": "Logout"
   },
   "footer": {
@@ -38,23 +40,27 @@
     "welcome": "Discover your",
     "spotify": "Spotify",
     "statistics": "statistics!",
-    "subtitle": "Get insights into your listening habits, your favorite songs, your favorite artists, and much more."
+    "subtitle": "Your musical identity, decorated"
   },
   "cards": {
     "charts": {
       "title": "My charts",
-      "description": "View the songs, artists, and albums you have played most often in different time periods."
+      "description": "Explore your charts"
     },
     "tools": {
       "title": "Tools",
-      "description": "Easily remove duplicate songs from a playlist or generate and download your recaps."
+      "description": "Manage your playlists"
+    },
+    "games": {
+      "title": "Games",
+      "description": "Discover a variety of games"
     }
   },
   "howItWorks": {
     "title": "How it works",
     "subtitle": "A simple three-step process to rediscover your music.",
     "step1": {
-      "title": "1.Connect",
+      "title": "1. Connect",
       "description": "Securely log in with your Spotify account. We never store your password."
     },
     "step2": {

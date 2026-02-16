@@ -23,3 +23,9 @@ export interface SelectChartData {
   topTracks: SpotifyTrack[];
   topArtists: SpotifyArtist[];
 }
+
+export interface RecentlyPlayedItem {
+  track: SpotifyTrack;
+  artist: SpotifyArtist;
+  played_at: string;
+}

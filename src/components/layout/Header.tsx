@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useDictionary } from "@/context/DictionaryProvider";
+import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import LoginButton from "../ui/LoginButton";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/components/layout/header.module.css";
@@ -18,13 +18,17 @@ export default function Header() {
   const closeMenuMobile = () => setMenuMobileOpen(false);
 
   const getLinkClass = (path: string) =>
-    pathname === `/${lang}${path}` ? styles.iconActive : styles.icon;
+    pathname.startsWith(`/${lang}${path}`) ? styles.iconActive : styles.icon;
+
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: `/${lang}/home` });
+  };
 
   return (
     <header className={styles.header}>
       <div className={styles.content}>
         <Link
-          href={`/${lang}/`}
+          href={`/${lang}/home`}
           className={styles.logo}
           onClick={closeMenuMobile}
         >
@@ -35,15 +39,6 @@ export default function Header() {
         <nav
           className={`${styles.nav} ${menuMobileOpen ? styles.navOpen : ""}`}
         >
-          <Link
-            href={`/${lang}/home`}
-            className={getLinkClass("/home")}
-            onClick={closeMenuMobile}
-          >
-            <i className="bi bi-house-fill"></i>
-            <span>{dict.header.home}</span>
-          </Link>
-
           <div className={styles.menuChartsWrapper}>
             <Link
               href={`/${lang}/charts`}
@@ -71,6 +66,14 @@ export default function Header() {
                 <i className="bi bi-person-lines-fill"></i>
                 <span>{dict.header.artists}</span>
               </Link>
+              <Link
+                href={`/${lang}/charts/recently-played`}
+                className={getLinkClass("/charts/recently-played")}
+                onClick={closeMenuMobile}
+              >
+                <i className="bi bi-clock-history"></i>
+                <span>{dict.header.recentlyPlayed}</span>
+              </Link>
             </div>
           </div>
 
@@ -81,6 +84,15 @@ export default function Header() {
           >
             <i className="bi bi-tools"></i>
             <span>{dict.header.tools}</span>
+          </Link>
+
+          <Link
+            href={`/${lang}/games`}
+            className={getLinkClass("/games")}
+            onClick={closeMenuMobile}
+          >
+            <i className="bi bi-house-fill"></i>
+            <span>{dict.header.games}</span>
           </Link>
 
           <Link
@@ -109,9 +121,11 @@ export default function Header() {
               <div className={styles.userDropdown}>
                 <div className={styles.userInfo}>
                   <p>{session.user?.name}</p>
-                  <img
+                  <Image
                     src={session.user?.image || "/user-profile.svg"}
                     alt="User Avatar"
+                    width={32}
+                    height={32}
                     className={styles.avatar}
                   />
                 </div>
@@ -126,7 +140,8 @@ export default function Header() {
                     {dict.header.settings}
                   </Link>
                   <hr className={styles.divider} />
-                  <button className={styles.logoutBtn}>
+                  <button onClick={handleLogout} className={styles.logoutBtn}>
+                    <i className="bi bi-box-arrow-right"></i>
                     {dict.header.logout}
                   </button>
                 </div>
@@ -141,9 +156,7 @@ export default function Header() {
                 onClick={() => setMenuMobileOpen(!menuMobileOpen)}
               />
             </div>
-          ) : (
-            <LoginButton />
-          )}
+          ) : null}
         </div>
       </div>
     </header>

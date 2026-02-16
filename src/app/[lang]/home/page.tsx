@@ -19,27 +19,30 @@ export default function Home() {
       </main>
       <section className={styles.cardsSection}>
         <Link href={`/${lang}/charts`} className={styles.card}>
-          <Image
-            src="/charts-card.png"
-            alt="My charts"
-            fill
-            className={styles.cardImage}
-          />
           <div>
-            <h4>{dict.cards.charts.title}</h4>
+            <h3>
+              {dict.cards.charts.title}
+              <i className="bi bi-arrow-right-circle-fill"></i>
+            </h3>
             <p>{dict.cards.charts.description}</p>
           </div>
         </Link>
         <Link href={`/${lang}/tools`} className={styles.card}>
-          <Image
-            src="/tools-card.png"
-            alt="Tools"
-            fill
-            className={styles.cardImage}
-          />
           <div>
-            <h4>{dict.cards.tools.title}</h4>
+            <h3>
+              {dict.cards.tools.title}{" "}
+              <i className="bi bi-arrow-right-circle-fill"></i>
+            </h3>
             <p>{dict.cards.tools.description}</p>
+          </div>
+        </Link>
+        <Link href={`/${lang}/games`} className={styles.card}>
+          <div>
+            <h3>
+              {dict.cards.games.title}
+              <i className="bi bi-arrow-right-circle-fill"></i>
+            </h3>
+            <p>{dict.cards.games.description}</p>
           </div>
         </Link>
       </section>

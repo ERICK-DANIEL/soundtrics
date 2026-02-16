@@ -1,14 +1,17 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { getUserChartsData } from "@/lib/spotify-services";
+import { useDictionary } from "@/context/DictionaryProvider";
+import { getUserChartsData } from "@/services/spotify-services";
 import { SelectChartData } from "@/types/spotify";
 import { useEffect, useState } from "react";
-import styles from "@/app/[lang]/charts/page.module.css";
 import { ChartCard } from "@/components/ChartCard";
+import styles from "@/app/[lang]/charts/page.module.css";
 import Image from "next/image";
+import Link from "next/dist/client/link";
 
 export default function ChartsPage() {
+  const { lang } = useDictionary();
   const { data: session } = useSession();
   const [data, setData] = useState<SelectChartData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -48,19 +51,22 @@ export default function ChartsPage() {
             subtitle="#1 Last 4 Weeks"
           />
         )}
+
         <div className={styles.card}>
-          <div className={styles.contentCard}>
-            <h4 className={styles.titleCard}>Recently played songs</h4>
-          </div>
-          <div className={styles.imageWrapperCard}>
-            <Image
-              src={"/recently-played.png"}
-              alt={"recently played songs"}
-              fill
-              priority
-              className={styles.bgImageCard}
-            />
-          </div>
+          <Link href={`/${lang}/charts/recently-played`}>
+            <div className={styles.contentCard}>
+              <h4 className={styles.titleCard}>Recently played songs</h4>
+            </div>
+            <div className={styles.imageWrapperCard}>
+              <Image
+                src={"/recently-played.png"}
+                alt={"recently played songs"}
+                fill
+                priority
+                className={styles.bgImageCard}
+              />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

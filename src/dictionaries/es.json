@@ -3,11 +3,13 @@
     "home": "Inicio",
     "charts": "Mis charts",
     "tools": "Herramientas",
+    "games": "Juegos",
     "settings": "Configuración",
     "profile": "Perfil",
     "login": "Iniciar con Spotify",
     "songs": "Top Canciones",
     "artists": "Top Artistas",
+    "recentlyPlayed": "Reproducciones recientes",
     "logout": "Cerrar sesión"
   },
   "footer": {
@@ -38,16 +40,20 @@
     "welcome": "¡Descubre tus estadísticas de",
     "spotify": "Spotify!",
     "statistics": "",
-    "subtitle": "Obtén información sobre tus hábitos de escucha, tus canciones favoritas, tus artistas favoritos y mucho más."
+    "subtitle": "Tu identidad musical decorada"
   },
   "cards": {
     "charts": {
       "title": "Mis charts",
-      "description": "Ver las canciones, artistas y álbumes que has reproducido con más frecuencia en diferentes períodos de tiempo."
+      "description": "Explora tus estadisticas"
     },
     "tools": {
       "title": "Herramientas",
-      "description": "Elimina fácilmente canciones duplicadas de una lista de reproducción o genera y descarga tus resúmenes."
+      "description": "Gestiona tus playlists"
+    },
+    "games": {
+      "title": "Juegos",
+      "description": "Descubre una variedad de juegos"
     }
   },
   "howItWorks": {

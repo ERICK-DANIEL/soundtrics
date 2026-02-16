@@ -1,6 +1,6 @@
 "use server";
 
-import spotifyApi from "./spotify";
+import spotifyApi from "@/lib/spotify";
 
 export async function getUserChartsData(accessToken: string) {
   try {
@@ -16,7 +16,22 @@ export async function getUserChartsData(accessToken: string) {
       topArtists: JSON.parse(JSON.stringify(topArtists.body.items)),
     };
   } catch (error) {
-    console.error("Error obteniendo charts:", error);
+    console.error("Error in getUserChartsData", error);
+    return null;
+  }
+}
+
+export async function getUserRecentlyPlayed(accessToken: string) {
+  try {
+    spotifyApi.setAccessToken(accessToken);
+
+    const recentlyPlayed = await spotifyApi.getMyRecentlyPlayedTracks({
+      limit: 50,
+    });
+
+    return JSON.parse(JSON.stringify(recentlyPlayed.body.items));
+  } catch (error) {
+    console.error("Error in getUserRecentlyPlayed", error);
     return null;
   }
 }
