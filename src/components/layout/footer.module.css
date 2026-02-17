@@ -17,7 +17,6 @@
   display: none;
 }
 
-.tools,
 .links,
 .resources {
   display: flex;
@@ -26,7 +25,6 @@
   margin-bottom: 1.5rem;
 }
 
-.tools span,
 .links span,
 .resources span {
   font-size: var(--font-body);
@@ -34,7 +32,6 @@
   margin-bottom: 0.4rem;
 }
 
-.tools a,
 .links a,
 .resources a {
   font-size: var(--font-body);
@@ -80,7 +77,7 @@
   .logo span {
     margin-left: 0.5rem;
   }
-  .tools,
+
   .links,
   .resources {
     align-items: flex-start;

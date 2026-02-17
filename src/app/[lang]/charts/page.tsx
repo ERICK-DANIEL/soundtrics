@@ -1,73 +1,61 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { useDictionary } from "@/context/DictionaryProvider";
-import { getUserChartsData } from "@/services/spotify-services";
-import { SelectChartData } from "@/types/spotify";
-import { useEffect, useState } from "react";
-import { ChartCard } from "@/components/ChartCard";
+import { useState } from "react";
 import styles from "@/app/[lang]/charts/page.module.css";
-import Image from "next/image";
-import Link from "next/dist/client/link";
 
-export default function ChartsPage() {
-  const { lang } = useDictionary();
-  const { data: session } = useSession();
-  const [data, setData] = useState<SelectChartData | null>(null);
-  const [loading, setLoading] = useState(true);
+type View = "tracks" | "artists" | "recent";
 
-  useEffect(() => {
-    if (session?.user.accessToken) {
-      getUserChartsData(session.user.accessToken as string)
-        .then((chartsData) => setData(chartsData))
-        .finally(() => setLoading(false));
+export default function MyCharts() {
+  const [activeView, setActiveView] = useState<View>("tracks");
+
+  const renderContent = () => {
+    switch (activeView) {
+      case "tracks":
+        return <div>Lista de Top Tracks...</div>;
+      case "artists":
+        return <div>Lista de Top Artists...</div>;
+      case "recent":
+        return <div>Lista de Recently Played...</div>;
+      default:
+        return null;
     }
-  }, [session]);
-
-  if (loading) return null;
-  if (!data) return null;
-
-  const topTrack = data.topTracks[0];
-  const topArtist = data.topArtists[0];
+  };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Select your chart</h1>
+    <div className={styles.pageWrapper}>
+      <div className={styles.container}>
+        <h1>My Charts</h1>
 
-      <div className={styles.cardsContainer}>
-        {topTrack && (
-          <ChartCard
-            title="Top Tracks"
-            name={topTrack.name}
-            imageUrl={topTrack.album.images[0]?.url}
-            subtitle="#1 Last 4 Weeks"
-          />
-        )}
-        {topArtist && (
-          <ChartCard
-            title="Top Artists"
-            name={topArtist.name}
-            imageUrl={topArtist.images[0]?.url}
-            subtitle="#1 Last 4 Weeks"
-          />
-        )}
-
-        <div className={styles.card}>
-          <Link href={`/${lang}/charts/recently-played`}>
-            <div className={styles.contentCard}>
-              <h4 className={styles.titleCard}>Recently played songs</h4>
-            </div>
-            <div className={styles.imageWrapperCard}>
-              <Image
-                src={"/recently-played.png"}
-                alt={"recently played songs"}
-                fill
-                priority
-                className={styles.bgImageCard}
-              />
-            </div>
-          </Link>
+        <div className={styles.tabsContainer}>
+          <div className={styles.tabs}>
+            <span
+              onClick={() => setActiveView("tracks")}
+              className={
+                activeView === "tracks" ? styles.tabActive : styles.tabInactive
+              }
+            >
+              Top tracks
+            </span>
+            <span
+              onClick={() => setActiveView("artists")}
+              className={
+                activeView === "artists" ? styles.tabActive : styles.tabInactive
+              }
+            >
+              Top artists
+            </span>
+            <span
+              onClick={() => setActiveView("recent")}
+              className={
+                activeView === "recent" ? styles.tabActive : styles.tabInactive
+              }
+            >
+              Recently played
+            </span>
+          </div>
         </div>
+
+        <div>{renderContent()}</div>
       </div>
     </div>
   );
